@@ -6,18 +6,20 @@ These classes allow you to check all of the different ways you can exclude a URL
 
 You can instantiate the following classes:
 
-* `nickmoline\RobotsChecker\RobotsTxt` : Checks the corresponding robots.txt file for a url
-* `nickmoline\RobotsChecker\RobotsStatus` : Checks the HTTP Status code for an indexable URL
-* `nickmoline\RobotsChecker\RobotsHeader` : Checks the HTTP `X-Robots-Tag` Header
-* `nickmoline\RobotsChecker\RobotsMeta` : Checks the `<meta name="robots">` tag (as well as bot specific tags)
-* `nickmoline\RobotsChecker\RobotsAll` : Wrapper class that will run all of the above checks
+* `NickMoline\Robots\RobotsTxt` : Checks the corresponding robots.txt file for a url
+* `NickMoline\Robots\RobotsStatus` : Checks the HTTP Status code for an indexable URL
+* `NickMoline\Robots\RobotsHeader` : Checks the HTTP `X-Robots-Tag` Header
+* `NickMoline\Robots\RobotsMeta` : Checks the `<meta name="robots">` tag (as well as bot specific tags)
+* `NickMoline\Robots\RobotsAll` : Wrapper class that will run all of the above checks
 
 ## Example Usage
 
 ```php
 <?php
 
-require nickmoline\RobotsChecker\RobotsTxt;
+require NickMoline\Robots\RobotsTxt;
+require NickMoline\Robots\RobotsHeader;
+require NickMoline\Robots\RobotsAll;
 
 $checker = new RobotsTxt("http://www.example.com/test.html");
 $allowed = $checker->verify("bingbot");  // Checks to see if blocked for bingbot by robots.txt file
@@ -31,4 +33,3 @@ $allowed = $checker->verify();           // Same as above but will test the X-Ro
 $checkerAll = new RobotsAll("http://www.example.com/test.html");
 $allowed = $checker->verify();           // This one runs all of the available tests
 ```
-

@@ -1,6 +1,6 @@
 <?php
 
-namespace nickmoline\RobotsChecker;
+namespace NickMoline\Robots;
 
 use League\Uri\Schemes\Http as HttpUri;
 use tomverran\Robot\RobotsTxt as TVRobots;

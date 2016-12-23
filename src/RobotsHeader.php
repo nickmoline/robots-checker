@@ -1,6 +1,6 @@
 <?php
 
-namespace nickmoline\RobotsChecker;
+namespace NickMoline\Robots;
 
 class RobotsHeader extends RobotsStatus
 {
