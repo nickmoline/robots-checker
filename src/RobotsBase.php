@@ -5,7 +5,7 @@ namespace NickMoline\Robots;
 use League\Uri\Schemes\Http as HttpUri;
 use Curl\Curl;
 
-class Robots
+class RobotsBase
 {
     protected $url;
     protected $urlInfo;
@@ -22,10 +22,10 @@ class Robots
         }
     }
 
-    public static function createFromExisting(Robots $existing, Robots $robots = null)
+    public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
     {
         if (!$robots) {
-            $robots = new Robots();
+            $robots = new RobotsBase();
         }
 
         $robots->setURL($existing->getURL())

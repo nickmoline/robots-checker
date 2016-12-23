@@ -5,20 +5,20 @@ namespace NickMoline\Robots;
 use League\Uri\Schemes\Http as HttpUri;
 use tomverran\Robot\RobotsTxt as TVRobots;
 
-class RobotsTxt extends Robots
+class RobotsTxt extends RobotsBase
 {
     private $robots;
     private $robotsContents;
     private $hasRobotsFile = false;
     private $isAllowed = true;
 
-    public static function createFromExisting(Robots $existing, Robots $robots = null)
+    public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
     {
         if (!$robots) {
             $robots = new RobotsTxt();
         }
 
-        $robots = Robots::createFromExisting($existing, $robots);
+        $robots = RobotsBase::createFromExisting($existing, $robots);
 
         return $robots;
     }

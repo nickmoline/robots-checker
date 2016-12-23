@@ -4,7 +4,7 @@ namespace NickMoline\Robots;
 
 class RobotsMeta extends RobotsStatus
 {
-    public static function createFromExisting(Robots $existing, Robots $robots = null)
+    public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
     {
         if (!$robots) {
             $robots = new RobotsMeta();

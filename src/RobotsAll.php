@@ -2,7 +2,7 @@
 
 namespace NickMoline\Robots;
 
-class RobotsAll extends Robots
+class RobotsAll extends RobotsBase
 {
     private $robotsTxt;
     private $robotsStatus;

@@ -10,7 +10,7 @@ class RobotsHeader extends RobotsStatus
     protected $globalAllowed = null;
     protected $globalAllowedLine = null;
 
-    public static function createFromExisting(Robots $existing, Robots $robots = null)
+    public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
     {
         if (!$robots) {
             $robots = new RobotsHeader();

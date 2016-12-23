@@ -2,7 +2,7 @@
 
 namespace NickMoline\Robots;
 
-class RobotsStatus extends Robots
+class RobotsStatus extends RobotsBase
 {
     protected $originalUrl;
     protected $contents = '';
@@ -11,13 +11,13 @@ class RobotsStatus extends Robots
     protected $requestHeaders = [];
     protected $redirects = [];
 
-    public static function createFromExisting(Robots $existing, Robots $robots = null)
+    public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
     {
         if (!$robots) {
             $robots = new RobotsStatus();
         }
 
-        $robots = Robots::createFromExisting($existing, $robots);
+        $robots = RobotsBase::createFromExisting($existing, $robots);
 
         if ($existing->isFetched()) {
             $robots->setRequestHeaders($existing->getRequestHeaders())
