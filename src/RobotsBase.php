@@ -14,12 +14,18 @@ class RobotsBase
     protected $reason;
     protected $label = null;
     protected $fetched = false;
+    protected $userAgent;
 
-    public function __construct($url = null)
+    protected $userAgentAllowed = null;
+    protected $globalAllowed = null;
+
+    public function __construct($url = null, $userAgent = "Googlebot")
     {
         if ($url) {
             $this->setURL($url);
         }
+
+        $this->setUserAgent($userAgent);
     }
 
     public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
@@ -35,6 +41,17 @@ class RobotsBase
                ->setLabel($existing->getLabel());
 
         return $robots;
+    }
+
+    public function resetAllowed()
+    {
+        $this->allowed = true;
+        $this->label = null;
+        $this->reason = null;
+        $this->userAgentAllowed = null;
+        $this->globalAllowed = null;
+
+        return $this;
     }
 
     public function isAllowed()
@@ -94,6 +111,16 @@ class RobotsBase
     {
         $this->url = $url;
         $this->urlInfo = null;
+
+        $this->resetAllowed();
+
+        return $this;
+    }
+
+    public function setUserAgent($userAgent = "Googlebot")
+    {
+        $this->userAgent = $userAgent;
+        $this->resetAllowed();
 
         return $this;
     }

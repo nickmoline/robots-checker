@@ -15,7 +15,7 @@ class RobotsMeta extends RobotsStatus
         return $robots;
     }
 
-    public function validate($userAgent = "Googlebot")
+    public function validate()
     {
     }
 }

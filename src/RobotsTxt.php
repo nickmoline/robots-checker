@@ -52,15 +52,16 @@ class RobotsTxt extends RobotsBase
         return $this->robots;
     }
 
-    public function validate($userAgent = "Googlebot")
+    public function validate()
     {
+        $this->resetAllowed();
         $robots = $this->robotsHandler();
         if (!$this->hasRobotsFile) {
             $this->setAllowed(true, "No robots.txt file present", "Allowed");
             return true;
         }
 
-        if ($robots->isAllowed($userAgent, $this->getRelativeUrl())) {
+        if ($robots->isAllowed($this->userAgent, $this->getRelativeUrl())) {
             $this->setAllowed(true, "Allowed by robots.txt", "Allowed");
             return true;
         }

@@ -8,63 +8,79 @@ use Curl\CaseInsensitiveArray;
 
 class RobotsHeaderTest extends PHPUnit_Framework_TestCase
 {
-    private $blockedHeader;
-    private $allowedHeader;
-    private $noHeader;
-    private $specificHeader;
-
-    public function setUp()
-    {
-        $noHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
-        
-        $this->noHeader = new RobotsHeader("http://www.example.com/ambiguous");
-        $this->noHeader->setResponseHeaders($noHeaders)->setFetched();
-
-        $blockedHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
-        $blockedHeaders['X-Robots-Tag'] = "noindex, nofollow";
-
-        $this->blockedHeader = new RobotsHeader("http://www.example.com/blocked");
-        $this->blockedHeader->setResponseHeaders($blockedHeaders)->setFetched();
-
-        $allowedHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
-        $allowedHeaders['X-Robots-Tag'] = "index, follow";
-
-        $this->allowedHeader = new RobotsHeader("http://www.example.com/allowed");
-        $this->allowedHeader->setResponseHeaders($allowedHeaders)->setFetched();
-
-        $specificHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
-        $specificHeaders['X-Robots-Tag'] = "index, follow\nGooglebot: noindex, nofollow";
-
-        $this->specificHeader = new RobotsHeader("http://www.example.com/blockgoogle");
-        $this->specificHeader->setResponseHeaders($specificHeaders)->setFetched();
-    }
-
     /**
      * Test that if no X-Robots-Tag header is present, the url is shown as allowed
-     * @return [type] [description]
      */
     public function testNoHeader()
     {
-        $this->assertTrue($this->noHeader->validate());
+        $noHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
+
+        $noHeader = new RobotsHeader("http://www.example.com/ambiguous");
+        $noHeader->setResponseHeaders($noHeaders)->setFetched();
+
+        $this->assertTrue($noHeader->validate());
     }
 
+    /**
+     * Test that if no X-Robots-Tag header set to index, follow, the url is shown as allowed
+     */
     public function testAllowedHeader()
     {
-        $this->assertTrue($this->allowedHeader->validate());
+        $allowedHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
+        $allowedHeaders['X-Robots-Tag'] = "index, follow";
+
+        $allowedHeader = new RobotsHeader("http://www.example.com/allowed");
+        $allowedHeader->setResponseHeaders($allowedHeaders)->setFetched();
+
+        $this->assertTrue($allowedHeader->validate());
     }
 
+    /**
+     * Test that if no X-Robots-Tag header set to noindex, nofollow, the url is shown as denied
+     */
     public function testBlockedHeader()
     {
-        $this->assertFalse($this->blockedHeader->validate());
+        $blockedHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
+        $blockedHeaders['X-Robots-Tag'] = "noindex, nofollow";
+
+        $blockedHeader = new RobotsHeader("http://www.example.com/blocked");
+        $blockedHeader->setResponseHeaders($blockedHeaders)->setFetched();
+
+        $this->assertFalse($blockedHeader->validate());
     }
 
-    public function testSpecificHeaderGooglebot()
+    /**
+     * Test that if no X-Robots-Tag header has specific instructions for one
+     * user agent, that those rules are respected
+     */
+    public function testSpecificHeader()
     {
-        $this->assertFalse($this->specificHeader->validate());
+        $specificHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
+        $specificHeaders['X-Robots-Tag'] = "index, follow\nGooglebot: noindex, nofollow";
+
+        $specificHeader = new RobotsHeader("http://www.example.com/blockgoogle");
+        $specificHeader->setResponseHeaders($specificHeaders)->setFetched();
+
+
+        $this->assertFalse($specificHeader->validate());
+        $this->assertTrue($specificHeader->setUserAgent("bingbot")->validate());
     }
 
-    public function testSpecificHeaderBingbot()
+    /**
+     * Test that if no X-Robots-Tag header has specific instructions for one
+     * user agent, that those rules are respected
+     */
+    public function testSpecificHeaderAllowedOverride()
     {
-        $this->assertTrue($this->specificHeader->validate("bingbot"));
+        $specificHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
+        $specificHeaders['X-Robots-Tag'] = "noindex, nofollow\nGooglebot: index, follow";
+
+        $specificHeader = new RobotsHeader("http://www.example.com/blockgoogle");
+        $specificHeader->setResponseHeaders($specificHeaders)->setFetched();
+
+
+        $this->assertTrue($specificHeader->validate());
+        $this->assertFalse($specificHeader->setUserAgent("bingbot")->validate());
     }
+
 }
