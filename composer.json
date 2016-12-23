@@ -21,9 +21,6 @@
         "php-curl-class/php-curl-class": "3.5.*",
         "league/uri": "^4.0"
     },
-    "require-dev": {
-        "larapack/dd": "^1.1"
-    },
     "autoload": {
         "psr-4": {
             "nickmoline\\RobotsChecker\\": "src/"
