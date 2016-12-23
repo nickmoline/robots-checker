@@ -1,4 +1,4 @@
-# Robots Exclusion Protocol Checking Classes [![Build Status](https://travis-ci.org/nickmoline/robots-checker.svg?branch=develop)](https://travis-ci.org/nickmoline/robots-checker)
+# Robots Exclusion Protocol Checking Classes [![Build Status](https://travis-ci.org/nickmoline/robots-checker.svg?branch=master)](https://travis-ci.org/nickmoline/robots-checker)
 
 These classes allow you to check all of the different ways you can exclude a URL from search engines.
 
