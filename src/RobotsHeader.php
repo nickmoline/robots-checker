@@ -47,7 +47,7 @@ class RobotsHeader extends RobotsStatus
 
         if (!is_null($this->userAgentAllowed)) {
             $this->setAllowed($this->userAgentAllowed)
-                 ->setReason($this->$userAgentAllowedLine);
+                 ->setReason($this->userAgentAllowedLine);
             return $this->userAgentAllowed;
         }
 
