@@ -1,0 +1,32 @@
+{
+    "name": "nickmoline/robots-checker",
+    "type": "library",
+    "description": "Class to check a URL for robots exclusion using all possible methods of robots exclusion",
+    "keywords": ["robots.txt", "meta robots", "x-robots-tag"],
+    "homepage": "https://github.com/nickmoline/robots-checker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nick Moline",
+            "homepage": "https://nickmoline.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "ext-mbstring" : "*",
+        "ext-intl" : "*",
+        "ext-fileinfo": "*",
+        "tomverran/robots-txt-checker": "^1.13",
+        "php-curl-class/php-curl-class": "3.5.*",
+        "league/uri": "^4.0"
+    },
+    "require-dev": {
+        "larapack/dd": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "nickmoline\\RobotsChecker\\": "src/"
+        }
+    }
+}
