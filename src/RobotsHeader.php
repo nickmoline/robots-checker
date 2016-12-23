@@ -4,10 +4,7 @@ namespace NickMoline\Robots;
 
 class RobotsHeader extends RobotsStatus
 {
-    protected $userAgentAllowed = null;
     protected $userAgentAllowedLine = null;
-
-    protected $globalAllowed = null;
     protected $globalAllowedLine = null;
 
     public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
@@ -21,7 +18,7 @@ class RobotsHeader extends RobotsStatus
         return $robots;
     }
 
-    public function validate($userAgent = "Googlebot")
+    public function validate()
     {
         if (!$this->isFetched()) {
             $validStatus = parent::validate();
@@ -42,12 +39,12 @@ class RobotsHeader extends RobotsStatus
         }
 
         foreach ($tags as $line) {
-            $this->processTagLine($line, $userAgent);
+            $this->processTagLine($line);
         }
 
         if (!is_null($this->userAgentAllowed)) {
             $this->setAllowed($this->userAgentAllowed)
-                 ->setReason($this->$userAgentAllowedLine);
+                 ->setReason($this->userAgentAllowedLine);
             return $this->userAgentAllowed;
         }
 
@@ -61,11 +58,11 @@ class RobotsHeader extends RobotsStatus
         return $this->isAllowed();
     }
 
-    private function processTagLine($line, $userAgent)
+    private function processTagLine($line)
     {
         $parts = explode(":", $line);
         if (count($parts) > 1) {
-            if (!stristr($parts[0], $userAgent)) {
+            if (!stristr($parts[0], $this->userAgent)) {
                 return null;
             }
 

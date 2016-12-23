@@ -1,4 +1,4 @@
-# Robots Exclusion Protocol Checking Classes
+# Robots Exclusion Protocol Checking Classes [![Build Status](https://travis-ci.org/nickmoline/robots-checker.svg?branch=master)](https://travis-ci.org/nickmoline/robots-checker)
 
 These classes allow you to check all of the different ways you can exclude a URL from search engines.
 
@@ -22,8 +22,8 @@ require NickMoline\Robots\RobotsHeader;
 require NickMoline\Robots\RobotsAll;
 
 $checker = new RobotsTxt("http://www.example.com/test.html");
-$allowed = $checker->verify("bingbot");  // Checks to see if blocked for bingbot by robots.txt file
-$allowed = $checker->verify();           // By default it checks Googlebot
+$allowed = $checker->verify();                              // By default it checks Googlebot
+$allowed = $checker->setUserAgent("bingbot")->verify();     // Checks to see if blocked for bingbot by robots.txt file
 
 echo $checker->getReason();              // Get the reason the url is allowed or denied
 

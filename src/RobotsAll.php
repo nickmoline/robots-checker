@@ -14,19 +14,21 @@ class RobotsAll extends RobotsBase
     private $allowedHeader = null;
     private $allowedMeta = null;
 
-    public function validate($userAgent = "Googlebot")
+    public function validate()
     {
+        $this->resetAllowed();
+
         $this->robotsTxt = RobotsTxt::createFromExisting($this);
-        $this->allowedTxt = $this->robotsTxt->validate($userAgent);
+        $this->allowedTxt = $this->robotsTxt->validate();
 
         $this->robotsStatus = RobotsStatus::createFromExisting($this);
-        $this->allowedStatus = $this->robotsStatus->validate($userAgent);
+        $this->allowedStatus = $this->robotsStatus->validate();
 
         $this->robotsHeader = RobotsHeader::createFromExisting($this->robotsStatus);
-        $this->allowedHeader = $this->robotsHeader->validate($userAgent);
+        $this->allowedHeader = $this->robotsHeader->validate();
 
         // $this->robotsMeta = RobotsMeta::createFromExisting($this->robotsStatus);
-        // $this->allowedMeta = $this->robotsMeta->validate($userAgent);
+        // $this->allowedMeta = $this->robotsMeta->validate();
 
         if ($this->allowedStatus === false) {
             $this->setDenied(

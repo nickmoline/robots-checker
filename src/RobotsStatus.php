@@ -73,15 +73,18 @@ class RobotsStatus extends RobotsBase
         return $this->statusCode;
     }
 
-    public function validate($userAgent = "Googlebot")
+    public function validate()
     {
+        $this->resetAllowed();
         $curl = $this->checkerCurl();
 
-        $contentFetch = $curl->get($this->url);
-        $this->setRequestHeaders($curl->request_headers)
-             ->setResponseHeaders($curl->response_headers)
-             ->setStatusCode($curl->http_status_code)
-             ->setFetched(true);
+        if (!$this->isFetched()) {
+            $contentFetch = $curl->get($this->url);
+            $this->setRequestHeaders($curl->request_headers)
+                 ->setResponseHeaders($curl->response_headers)
+                 ->setStatusCode($curl->http_status_code)
+                 ->setFetched(true);
+        }
 
         if (in_array($this->statusCode, [301, 302, 303, 307])) {
             return $this->processRedirect();
@@ -90,8 +93,6 @@ class RobotsStatus extends RobotsBase
         if (stristr($this->responseHeaders['Content-Type'], "html")) {
             $this->setContents($curl->response);
         }
-
-        unset($this->curl);
 
         return $this->checkAllowedStatusCode();
     }
