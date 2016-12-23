@@ -16,16 +16,19 @@ class RobotsHeaderTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $noHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
+        
         $this->noHeader = new RobotsHeader("http://www.example.com/ambiguous");
         $this->noHeader->setResponseHeaders($noHeaders)->setFetched();
 
         $blockedHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
         $blockedHeaders['X-Robots-Tag'] = "noindex, nofollow";
+
         $this->blockedHeader = new RobotsHeader("http://www.example.com/blocked");
         $this->blockedHeader->setResponseHeaders($blockedHeaders)->setFetched();
 
         $allowedHeaders = new CaseInsensitiveArray(["Content-Type" => "text/html"]);
         $allowedHeaders['X-Robots-Tag'] = "index, follow";
+
         $this->allowedHeader = new RobotsHeader("http://www.example.com/allowed");
         $this->allowedHeader->setResponseHeaders($allowedHeaders)->setFetched();
 
