@@ -24,11 +24,13 @@ User-agent: *
 Disallow: /blocked
 Disallow: /allowbing
 Disallow: /*.txt
+Disallow: /blockonly$
 Allow: /banana/split.txt
 Allow: /
 
 Sitemap: http://www.example.com/sitemap.xml");
     }
+
     /**
      * Test that if no robots.txt file is present, the url is shown as allowed
      */
@@ -89,6 +91,9 @@ Sitemap: http://www.example.com/sitemap.xml");
         $this->assertTrue($robots->setUserAgent("bingbot")->validate());
     }
 
+    /**
+     * Test that wildcard block lines in the robots.txt file are blocked
+     */
     public function testBlockedWildcard()
     {
         $robots = new RobotsTxt("http://www.example.com/banana.txt");
@@ -97,6 +102,9 @@ Sitemap: http://www.example.com/sitemap.xml");
         $this->assertFalse($robots->validate());
     }
 
+    /**
+     * Test that exceptions to the wildcard blocked lines (specific allow) are allowed
+     */
     public function testWildcardException()
     {
         $robots = new RobotsTxt("http://www.example.com/banana/split.txt");
@@ -105,12 +113,27 @@ Sitemap: http://www.example.com/sitemap.xml");
         $this->assertTrue($robots->validate());
     }
 
+    /**
+     * Test that files in subpaths of a blocked line are blocked as well
+     */
     public function testSubpath()
     {
         $robots = new RobotsTxt("http://www.example.com/blocked/2.html");
         $robots->setRobotsHandler($this->robotsFileContents);
 
         $this->assertFalse($robots->validate());
+    }
+
+    /**
+     * Test that lines ending in $ don't block subpaths
+     */
+    public function testSubpathFixedEnding()
+    {
+        $robots = new RobotsTxt("http://www.example.com/blockonly/2.html");
+        $robots->setRobotsHandler($this->robotsFileContents);
+
+        $this->assertTrue($robots->validate());
+
     }
 
 }
