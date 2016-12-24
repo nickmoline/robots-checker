@@ -10,7 +10,6 @@ class RobotsTxt extends RobotsBase
     private $robots;
     private $robotsContents;
     private $hasRobotsFile = false;
-    private $isAllowed = true;
 
     public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
     {
@@ -47,7 +46,7 @@ class RobotsTxt extends RobotsBase
         }
 
         $this->hasRobotsFile = true;
-        $this->setRobotsHandler($curl->response);
+        $this->setRobotsHandler($curl->response, true);
 
         return $this->robots;
     }
@@ -72,13 +71,13 @@ class RobotsTxt extends RobotsBase
 
     public function setRobotsEmpty()
     {
-        $this->hasRobotsFile = false;
-        return $this->setRobotsHandler("User-agent: *\nAllow: /");
+        return $this->setRobotsHandler("User-agent: *\nAllow: /", false);
     }
 
-    public function setRobotsHandler($contents = "User-agent: *\nAllow: /")
+    public function setRobotsHandler($contents = "User-agent: *\nAllow: /", $hasRobotsFile = true)
     {
         $this->robotsContents = $contents;
+        $this->hasRobotsFile = $hasRobotsFile;
         $this->robots = new TVRobots($this->robotsContents);
 
         return $this->robots;
