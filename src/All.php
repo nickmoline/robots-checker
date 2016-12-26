@@ -4,7 +4,7 @@ namespace NickMoline\Robots;
 
 use NickMoline\Robots\Base as RobotsBase;
 
-class RobotsAll extends RobotsBase
+class All extends RobotsBase
 {
     private $robotsTxt;
     private $robotsStatus;
@@ -56,5 +56,25 @@ class RobotsAll extends RobotsBase
                 $this->robotsTxt->getLabel()
             );
         }
+    }
+
+    public function getRobotsTxt()
+    {
+        return $this->robotsTxt;
+    }
+
+    public function getRobotsStatus()
+    {
+        return $this->robotsStatus;
+    }
+
+    public function getRobotsHeader()
+    {
+        return $this->robotsHeader;
+    }
+
+    public function getRobotsMeta()
+    {
+        return $this->robotsMeta;
     }
 }
