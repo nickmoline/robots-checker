@@ -7,10 +7,10 @@ These classes allow you to check all of the different ways you can exclude a URL
 You can instantiate the following classes:
 
 * `NickMoline\Robots\RobotsTxt` : Checks the corresponding robots.txt file for a url
-* `NickMoline\Robots\RobotsStatus` : Checks the HTTP Status code for an indexable URL
-* `NickMoline\Robots\RobotsHeader` : Checks the HTTP `X-Robots-Tag` Header
-* `NickMoline\Robots\RobotsMeta` : Checks the `<meta name="robots">` tag (as well as bot specific tags)
-* `NickMoline\Robots\RobotsAll` : Wrapper class that will run all of the above checks
+* `NickMoline\Robots\Status` : Checks the HTTP Status code for an indexable URL
+* `NickMoline\Robots\Header` : Checks the HTTP `X-Robots-Tag` Header
+* `NickMoline\Robots\Meta` : Checks the `<meta name="robots">` tag (as well as bot specific tags)
+* `NickMoline\Robots\All` : Wrapper class that will run all of the above checks
 
 ## Example Usage
 
@@ -18,8 +18,8 @@ You can instantiate the following classes:
 <?php
 
 require NickMoline\Robots\RobotsTxt;
-require NickMoline\Robots\RobotsHeader;
-require NickMoline\Robots\RobotsAll;
+require NickMoline\Robots\Header as RobotsHeader;
+require NickMoline\Robots\All as RobotsAll;
 
 $checker = new RobotsTxt("http://www.example.com/test.html");
 $allowed = $checker->verify();                              // By default it checks Googlebot

@@ -2,7 +2,9 @@
 
 namespace NickMoline\Robots;
 
-class RobotsAll extends RobotsBase
+use NickMoline\Robots\Base as RobotsBase;
+
+class All extends RobotsBase
 {
     private $robotsTxt;
     private $robotsStatus;
@@ -21,13 +23,13 @@ class RobotsAll extends RobotsBase
         $this->robotsTxt = RobotsTxt::createFromExisting($this);
         $this->allowedTxt = $this->robotsTxt->validate();
 
-        $this->robotsStatus = RobotsStatus::createFromExisting($this);
+        $this->robotsStatus = Status::createFromExisting($this);
         $this->allowedStatus = $this->robotsStatus->validate();
 
-        $this->robotsHeader = RobotsHeader::createFromExisting($this->robotsStatus);
+        $this->robotsHeader = Header::createFromExisting($this->robotsStatus);
         $this->allowedHeader = $this->robotsHeader->validate();
 
-        // $this->robotsMeta = RobotsMeta::createFromExisting($this->robotsStatus);
+        // $this->robotsMeta = Meta::createFromExisting($this->robotsStatus);
         // $this->allowedMeta = $this->robotsMeta->validate();
 
         if ($this->allowedStatus === false) {
@@ -54,5 +56,25 @@ class RobotsAll extends RobotsBase
                 $this->robotsTxt->getLabel()
             );
         }
+    }
+
+    public function getRobotsTxt()
+    {
+        return $this->robotsTxt;
+    }
+
+    public function getRobotsStatus()
+    {
+        return $this->robotsStatus;
+    }
+
+    public function getRobotsHeader()
+    {
+        return $this->robotsHeader;
+    }
+
+    public function getRobotsMeta()
+    {
+        return $this->robotsMeta;
     }
 }
