@@ -2,6 +2,8 @@
 
 namespace NickMoline\Robots;
 
+use NickMoline\Robots\Base as RobotsBase;
+
 class RobotsMeta extends RobotsStatus
 {
     public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)

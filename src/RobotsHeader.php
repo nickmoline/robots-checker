@@ -2,6 +2,8 @@
 
 namespace NickMoline\Robots;
 
+use NickMoline\Robots\Base as RobotsBase;
+
 class RobotsHeader extends RobotsStatus
 {
     protected $userAgentAllowedLine = null;

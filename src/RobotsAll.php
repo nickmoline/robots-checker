@@ -2,6 +2,8 @@
 
 namespace NickMoline\Robots;
 
+use NickMoline\Robots\Base as RobotsBase;
+
 class RobotsAll extends RobotsBase
 {
     private $robotsTxt;

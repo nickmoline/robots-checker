@@ -4,6 +4,7 @@ namespace NickMoline\Robots;
 
 use League\Uri\Schemes\Http as HttpUri;
 use tomverran\Robot\RobotsTxt as TVRobots;
+use NickMoline\Robots\Base as RobotsBase;
 
 class RobotsTxt extends RobotsBase
 {
