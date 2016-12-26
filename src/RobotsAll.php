@@ -23,7 +23,7 @@ class RobotsAll extends RobotsBase
         $this->robotsTxt = RobotsTxt::createFromExisting($this);
         $this->allowedTxt = $this->robotsTxt->validate();
 
-        $this->robotsStatus = RobotsStatus::createFromExisting($this);
+        $this->robotsStatus = Status::createFromExisting($this);
         $this->allowedStatus = $this->robotsStatus->validate();
 
         $this->robotsHeader = Header::createFromExisting($this->robotsStatus);

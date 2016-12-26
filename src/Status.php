@@ -4,7 +4,7 @@ namespace NickMoline\Robots;
 
 use NickMoline\Robots\Base as RobotsBase;
 
-class RobotsStatus extends RobotsBase
+class Status extends RobotsBase
 {
     protected $originalUrl;
     protected $contents = '';
@@ -16,7 +16,7 @@ class RobotsStatus extends RobotsBase
     public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
     {
         if (!$robots) {
-            $robots = new RobotsStatus();
+            $robots = new Status();
         }
 
         $robots = RobotsBase::createFromExisting($existing, $robots);

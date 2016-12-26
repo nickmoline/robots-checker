@@ -12,7 +12,7 @@ class Meta extends RobotsStatus
             $robots = new Meta();
         }
 
-        $robots = RobotsStatus::createFromExisting($existing, $robots);
+        $robots = Status::createFromExisting($existing, $robots);
 
         return $robots;
     }

@@ -15,7 +15,7 @@ class Header extends RobotsStatus
             $robots = new Header();
         }
 
-        $robots = RobotsStatus::createFromExisting($existing, $robots);
+        $robots = Status::createFromExisting($existing, $robots);
 
         return $robots;
     }
