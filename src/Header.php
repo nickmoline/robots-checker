@@ -4,7 +4,7 @@ namespace NickMoline\Robots;
 
 use NickMoline\Robots\Base as RobotsBase;
 
-class Header extends RobotsStatus
+class Header extends Status
 {
     protected $userAgentAllowedLine = null;
     protected $globalAllowedLine = null;
