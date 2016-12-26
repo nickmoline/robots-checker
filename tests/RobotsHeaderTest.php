@@ -3,7 +3,7 @@
 namespace NickMoline\Robots\Test;
 
 use PHPUnit_Framework_TestCase;
-use NickMoline\Robots\RobotsHeader;
+use NickMoline\Robots\Header as RobotsHeader;
 use Curl\CaseInsensitiveArray;
 
 class RobotsHeaderTest extends PHPUnit_Framework_TestCase

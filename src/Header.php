@@ -4,7 +4,7 @@ namespace NickMoline\Robots;
 
 use NickMoline\Robots\Base as RobotsBase;
 
-class RobotsHeader extends RobotsStatus
+class Header extends RobotsStatus
 {
     protected $userAgentAllowedLine = null;
     protected $globalAllowedLine = null;
@@ -12,7 +12,7 @@ class RobotsHeader extends RobotsStatus
     public static function createFromExisting(RobotsBase $existing, RobotsBase $robots = null)
     {
         if (!$robots) {
-            $robots = new RobotsHeader();
+            $robots = new Header();
         }
 
         $robots = RobotsStatus::createFromExisting($existing, $robots);
