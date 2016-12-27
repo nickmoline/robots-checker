@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Fixed
+### Changed
+### Added
+
 ## [v1.0.1]
 ### Fixed
 - [#5](https://github.com/nickmoline/robots-checker/issues/5) Redirects not being followed and seen as a loop - @nickmoline
