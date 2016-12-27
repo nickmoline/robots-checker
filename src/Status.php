@@ -162,7 +162,7 @@ class Status extends RobotsBase
 
         $redirectUrl = $this->responseHeaders['Location'];
         $this->redirects[] = "{$this->statusCode} {$redirectUrl}";
-        $this->setURL($redirectUrl);
+        $this->setURL($redirectUrl)->setNotFetched();
         return $this->validate();
     }
 }

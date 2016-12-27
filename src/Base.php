@@ -169,6 +169,12 @@ class Base
         return $this;
     }
 
+    public function setNotFetched()
+    {
+        $this->fetched = false;
+        return $this;
+    }
+
     public function isFetched()
     {
         return $this->fetched;
