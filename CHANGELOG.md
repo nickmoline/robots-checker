@@ -3,8 +3,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
-### Fixed
+## [v1.0.2] - 2016-12-29
 ### Changed
 - Set explicit allowed reason in `Robots\Meta` if no META Robots tag is present - @nickmoline
 - Set explicit allowed reason in `Robots\Header` if no `X-Robots-Tag` HTTP Header is present - @nickmoline
@@ -27,5 +26,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - php-unit tests - @nickmoline
 
 [Unreleased]: https://github.com/nickmoline/robots-checker
+[v1.0.2]: https://github.com/nickmoline/robots-checker/releases/tag/v1.0.2
 [v1.0.1]: https://github.com/nickmoline/robots-checker/releases/tag/v1.0.1
 [v1.0.0]: https://github.com/nickmoline/robots-checker/releases/tag/v1.0.0
