@@ -31,6 +31,9 @@ class Header extends Status
 
         $headers = $this->getResponseHeaders();
         if (!isset($headers['X-Robots-Tag'])) {
+            if ($this->isAllowed()) {
+                $this->setReason("No X-Robots-Tag HTTP Header");
+            }
             return $this->isAllowed();
         }
 

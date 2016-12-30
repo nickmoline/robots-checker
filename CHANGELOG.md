@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Fixed
 ### Changed
+- Set explicit allowed reason in `Robots\Meta` if no META Robots tag is present - @nickmoline
+- Set explicit allowed reason in `Robots\Header` if no `X-Robots-Tag` HTTP Header is present - @nickmoline
 ### Added
 - Added Release Dates to releases in CHANGELOG - @nickmoline
 - Added getters and setters for Redirects and Original URL to `Robots\Status` - @nickmoline

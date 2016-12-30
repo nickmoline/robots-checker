@@ -45,6 +45,9 @@ class Meta extends Status
             return $this->globalAllowed;
         }
 
+        if ($this->isAllowed()) {
+            $this->setReason("No Meta Robots or Meta {$this->userAgent} Tag Present");
+        }
         return $this->isAllowed();
     }
 
