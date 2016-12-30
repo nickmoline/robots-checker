@@ -181,6 +181,7 @@ class Status extends RobotsBase
     public function setRedirects($redirects)
     {
         $this->redirects = $redirects;
+        return $this;
     }
 
     public function getOriginalUrl()
@@ -191,5 +192,6 @@ class Status extends RobotsBase
     public function setOriginalUrl($url)
     {
         $this->originalUrl = $url;
+        return $this;
     }
 }
