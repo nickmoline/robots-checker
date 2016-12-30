@@ -25,6 +25,8 @@ class Status extends RobotsBase
             $robots->setRequestHeaders($existing->getRequestHeaders())
                    ->setResponseHeaders($existing->getResponseHeaders())
                    ->setStatusCode($existing->getStatusCode())
+                   ->setOriginalUrl($existing->getOriginalUrl())
+                   ->setRedirects($existing->getRedirects())
                    ->setContents($existing->getContents());
         }
 
@@ -153,7 +155,7 @@ class Status extends RobotsBase
     private function processRedirect()
     {
         if (!isset($this->originalUrl)) {
-            $this->originalUrl = $this->url;
+            $this->setOriginalUrl($this->url);
         }
 
         if (count($this->redirects) > 10) {
@@ -164,5 +166,30 @@ class Status extends RobotsBase
         $this->redirects[] = "{$this->statusCode} {$redirectUrl}";
         $this->setURL($redirectUrl)->setNotFetched();
         return $this->validate();
+    }
+
+    public function getRedirects($includeOriginal = false)
+    {
+        $redirects = $this->redirects;
+        if ($includeOriginal) {
+            array_unshift($redirects, "Original URL: {$this->originalUrl}");
+        }
+
+        return $redirects;
+    }
+
+    public function setRedirects($redirects)
+    {
+        $this->redirects = $redirects;
+    }
+
+    public function getOriginalUrl()
+    {
+        return $this->originalUrl;
+    }
+
+    public function setOriginalUrl($url)
+    {
+        $this->originalUrl = $url;
     }
 }
