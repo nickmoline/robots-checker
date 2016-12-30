@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 ### Added
 - Added Release Dates to releases in CHANGELOG - @nickmoline
+- Added getters and setters for Redirects and Original URL to `Robots\Status` - @nickmoline
 
 ## [v1.0.1] - 2016-12-27
 ### Fixed
