@@ -25,6 +25,8 @@ class Status extends RobotsBase
             $robots->setRequestHeaders($existing->getRequestHeaders())
                    ->setResponseHeaders($existing->getResponseHeaders())
                    ->setStatusCode($existing->getStatusCode())
+                   ->setOriginalUrl($existing->getOriginalUrl())
+                   ->setRedirects($existing->getRedirects())
                    ->setContents($existing->getContents());
         }
 
