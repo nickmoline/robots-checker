@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Fixed
+### Changed
+### Added
+
 ## [v1.0.2] - 2016-12-29
 ### Changed
 - Set explicit allowed reason in `Robots\Meta` if no META Robots tag is present - @nickmoline
