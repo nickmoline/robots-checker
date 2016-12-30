@@ -3,12 +3,15 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
-### Fixed
+## [v1.0.2] - 2016-12-29
 ### Changed
+- Set explicit allowed reason in `Robots\Meta` if no META Robots tag is present - @nickmoline
+- Set explicit allowed reason in `Robots\Header` if no `X-Robots-Tag` HTTP Header is present - @nickmoline
 ### Added
+- Added getters and setters for Redirects and Original URL to `Robots\Status` - @nickmoline
+- Passed redirects and original url to `::createFromExisting` for `Robots\Status` - @nickmoline
 
-## [v1.0.1]
+## [v1.0.1] - 2016-12-27
 ### Fixed
 - [#5](https://github.com/nickmoline/robots-checker/issues/5) Redirects not being followed and seen as a loop - @nickmoline
 ### Added
