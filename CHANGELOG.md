@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v1.0.4] - 2017-01-27
+### Changed
+- Updated `tomverran/robots-txt-checker` to 1.14 - @nickmoline
+
 ## [v1.0.3] - 2016-12-30
 ### Fixed
 - Missing chain returns in `Robots\Status` - @nickmoline
@@ -30,6 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - php-unit tests - @nickmoline
 
 [Unreleased]: https://github.com/nickmoline/robots-checker
+[v1.0.4]: https://github.com/nickmoline/robots-checker/releases/tag/v1.0.4
 [v1.0.3]: https://github.com/nickmoline/robots-checker/releases/tag/v1.0.3
 [v1.0.2]: https://github.com/nickmoline/robots-checker/releases/tag/v1.0.2
 [v1.0.1]: https://github.com/nickmoline/robots-checker/releases/tag/v1.0.1
