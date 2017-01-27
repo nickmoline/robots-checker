@@ -17,7 +17,7 @@
         "ext-mbstring" : "*",
         "ext-intl" : "*",
         "ext-fileinfo": "*",
-        "tomverran/robots-txt-checker": "^1.13",
+        "tomverran/robots-txt-checker": "^1.14",
         "php-curl-class/php-curl-class": "3.5.*",
         "league/uri": "^4.0",
         "paquettg/php-html-parser": "^1.7"
