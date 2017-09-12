@@ -1,30 +1,38 @@
 <?php
-$header = <<<'EOF'
-Configuration for php-cs-fixer PSR2
-EOF;
-Symfony\CS\Fixer\Contrib\HeaderCommentFixer::setHeader($header);
-return Symfony\CS\Config\Config::create()
-    ->level(Symfony\CS\FixerInterface::PSR2_LEVEL)
-    ->fixers([
-        'concat_with_spaces',
-        'elseif',
-        'eof_ending',
-        'remove_leading_slash_use',
-        'phpdoc_no_empty_return',
-        'phpdoc_params',
-        'phpdoc_to_comment',
-        'phpdoc_order',
-        'function_call_space',
-        'function_declaration',
-        'indentation',
-        'line_after_namespace',
-        'lowercase_constants',
-        'method_argument_space',
-        'trailing_spaces',
-        'new_with_braces'
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__ . "/src")
+    ->in(__DIR__ . "/tests");
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@PSR2'                             => true,
+        'concat_space'                      => [
+            'spacing'   =>  'one'
+        ],
+        'elseif'                            => true,
+        'single_blank_line_at_eof'          => true,
+        'phpdoc_no_empty_return'            => true,
+        'phpdoc_align'                      => [
+            'tags' => ['param', 'return', 'throws', 'type', 'var'],
+        ],
+        'phpdoc_to_comment'                 => true,
+        'phpdoc_order'                      => true,
+        'no_spaces_after_function_name'     => true,
+        'function_declaration'              => [
+            'closure_function_spacing' => 'one',
+        ],
+        'indentation_type'                  => true,
+        'blank_line_after_namespace'        => true,
+        'blank_line_after_opening_tag'      => true,
+        'lowercase_constants'               => true,
+        'lowercase_keywords'                => true,
+        'method_argument_space'             => [
+            'ensure_fully_multiline'    =>  false,
+            'keep_multiple_spaces_after_comma' => false
+        ],
+        'no_trailing_whitespace'            => true,
+        'no_trailing_whitespace_in_comment' => true,
+        'new_with_braces'                   => true,
     ])
-    ->finder(
-        Symfony\CS\Finder\DefaultFinder::create()
-            ->in(__DIR__.'/src')
-            ->in(__DIR__.'/tests')
-    );
+    ->setFinder($finder);
