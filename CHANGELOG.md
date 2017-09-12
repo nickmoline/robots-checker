@@ -3,9 +3,13 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v1.0.5] - 2017-09-12
+### Changed
+- Updated [friendsofphp/php-cs-fixer] to 2.6 - @nickmoline
+
 ## [v1.0.4] - 2017-01-27
 ### Changed
-- Updated `tomverran/robots-txt-checker` to 1.14 - @nickmoline
+- Updated [tomverran/robots-txt-checker] to 1.14 - @nickmoline
 
 ## [v1.0.3] - 2016-12-30
 ### Fixed
@@ -32,6 +36,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Initial Commits of base project - @nickmoline
 - Classes for checking urls against various methods of robots exclusion - @nickmoline
 - php-unit tests - @nickmoline
+
+[tomverran/robots-txt-checker]: https://github.com/tomverran/robots
+[friendsofphp/php-cs-fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer/
 
 [Unreleased]: https://github.com/nickmoline/robots-checker
 [v1.0.4]: https://github.com/nickmoline/robots-checker/releases/tag/v1.0.4
