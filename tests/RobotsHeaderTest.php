@@ -82,5 +82,4 @@ class RobotsHeaderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($specificHeader->validate());
         $this->assertFalse($specificHeader->setUserAgent("bingbot")->validate());
     }
-
 }

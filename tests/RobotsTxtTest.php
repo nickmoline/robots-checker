@@ -47,7 +47,6 @@ Sitemap: http://www.example.com/sitemap.xml");
      */
     public function testAllowed()
     {
-
         $robots = new RobotsTxt("http://www.example.com/allowed");
         $robots->setRobotsHandler($this->robotsFileContents);
 
@@ -133,7 +132,5 @@ Sitemap: http://www.example.com/sitemap.xml");
         $robots->setRobotsHandler($this->robotsFileContents);
 
         $this->assertTrue($robots->validate());
-
     }
-
 }

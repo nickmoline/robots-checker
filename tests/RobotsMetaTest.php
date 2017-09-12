@@ -101,5 +101,4 @@ class RobotsMetaTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($robots->validate());
         $this->assertFalse($robots->setUserAgent("bingbot")->validate());
     }
-
 }

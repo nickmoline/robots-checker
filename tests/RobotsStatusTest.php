@@ -58,7 +58,6 @@ class RobotsStatusTest extends PHPUnit_Framework_TestCase
         $this->robots->setStatusCode(404);
 
         $this->assertFalse($this->robots->validate());
-
     }
 
     public function test410()
@@ -67,5 +66,4 @@ class RobotsStatusTest extends PHPUnit_Framework_TestCase
 
         $this->assertFalse($this->robots->validate());
     }
-
 }

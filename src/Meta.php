@@ -23,7 +23,7 @@ class Meta extends Status
 
     public function validate()
     {
-        $dom = new Dom;
+        $dom = new Dom();
         $dom->load($this->contents);
         $metas = $dom->find('meta');
 
@@ -35,7 +35,6 @@ class Meta extends Status
             $this->setAllowed($this->userAgentAllowed)
                  ->setReason($this->userAgentAllowedLine);
             return $this->userAgentAllowed;
-
         }
 
         if (!is_null($this->globalAllowed)) {
@@ -67,7 +66,9 @@ class Meta extends Status
     private function processTagLine($meta)
     {
         $name = $meta->getAttribute("name");
-        if (!$name) return null;
+        if (!$name) {
+            return null;
+        }
 
         if (stristr($name, $this->userAgent)) {
             $content = $meta->getAttribute("content");
