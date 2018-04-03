@@ -10,13 +10,13 @@ class UriPackageUsageTest extends PHPUnit_Framework_TestCase
 {
     public function testUrl()
     {
-        $this->assertTrue((new RobotsTxt('https://www.google.com/search'))->urlInfo() instanceof Http);
-        $this->assertEquals('/search', (new RobotsTxt('https://www.google.com/search'))->getRelativeUrl());
-        $this->assertEquals('https://www.google.com/robots.txt', (new RobotsTxt('https://www.google.com/search'))->getRobotsUrl());
-        $this->assertEquals(false, (new RobotsTxt('https://www.google.com/search'))->validate());
-        $this->assertEquals(true, (new RobotsTxt('https://www.google.com/search/about'))->validate());
-        $this->assertEquals(false, (new RobotsTxt('https://www.google.com/sdch'))->validate());
-        $this->assertEquals(false, (new RobotsTxt('https://www.google.com/ebooks/'))->validate());
-        $this->assertEquals('https://www.google.com/', (new RobotsTxt('https://www.google.com/search/about'))->getHomepageUrl());
+        $validator = new RobotsTxt();
+
+        $this->assertEquals('/search', $validator->setURL('https://www.google.com/search')->getRelativeUrl());
+        $this->assertEquals('https://www.google.com/robots.txt', $validator->setURL('https://www.google.com/search')->getRobotsUrl());
+        $this->assertEquals('https://www.google.com/', $validator->setURL('https://www.google.com/search')->getHomepageUrl());
+        $this->assertEquals(true, $validator->setURL('https://www.google.com/search/about')->validate());
+        $this->assertEquals(false, $validator->setURL('https://www.google.com/search')->validate());
+        $this->assertEquals('Denied by robots.txt', $validator->getReason());
     }
 }
