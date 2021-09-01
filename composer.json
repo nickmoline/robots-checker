@@ -5,17 +5,15 @@
     "keywords": ["robots.txt", "meta robots", "x-robots-tag"],
     "homepage": "https://github.com/nickmoline/robots-checker",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Nick Moline",
-            "homepage": "https://nickmoline.com",
-            "role": "Developer"
-        }
-    ],
+    "authors": [{
+        "name": "Nick Moline",
+        "homepage": "https://nickmoline.com",
+        "role": "Developer"
+    }],
     "require": {
         "php": ">=5.5.9",
-        "ext-mbstring" : "*",
-        "ext-intl" : "*",
+        "ext-mbstring": "*",
+        "ext-intl": "*",
         "ext-fileinfo": "*",
         "tomverran/robots-txt-checker": "^1.14",
         "php-curl-class/php-curl-class": "3.5.*",
